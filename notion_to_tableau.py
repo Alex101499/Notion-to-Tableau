@@ -65,7 +65,7 @@ class NotionRequest:
             df_prop=pd.concat([df_prop,df_properties],ignore_index=True)
         return df_prop
 def main():
-    notion = NotionRequest('secret_HHOAubLbR6FCQ8Xixvf8E5AUZ9c4QaUelv1akHnhxWU','4a69dd755af24bb6b1462cf2f2576fda')
+    notion = NotionRequest('API_KEI','TABLE_ID')
     interest_points=notion.request()
     interest_points_properties = notion.get_interest_points_properties(interest_points)
     properties = list()
