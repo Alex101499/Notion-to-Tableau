@@ -84,10 +84,10 @@ class NotionRequest:
 
 
 def main():
-    notion = NotionRequest('secret_HHOAubLbR6FCQ8Xixvf8E5AUZ9c4QaUelv1akHnhxWU')
-    interest_points=notion.request('4a69dd755af24bb6b1462cf2f2576fda')
-    visit_places = notion.request('dbde81e4eaca43258ff8cc4c0f4f99c5')
-    trips = notion.request('eb380f41bb5846e981654bba2ece3d46')
+    notion = NotionRequest('API_KEY')
+    interest_points=notion.request('TABLE_ID')
+    visit_places = notion.request('TABLE_ID')
+    trips = notion.request('TABLE_ID')
     df_interest_points = notion.get_dataframe(interest_points)
     df_visit_places = notion.get_dataframe(visit_places)
     df_trips = notion.get_dataframe(trips)
