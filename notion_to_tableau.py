@@ -1,18 +1,18 @@
 import requests
 from pprint import pprint
 import pandas as pd
+from google_sheets_api import GoogleSheets
 
 class NotionRequest:
-    def __init__(self,token,database_id):
+    def __init__(self,token):
         self.token = token
-        self.database_id = database_id
-    def request(self,num_pages=None):
+    def request(self,database_id,num_pages=None):
         headers = {
         "Authorization": "Bearer " + self.token,
         "Content-Type": "application/json",
         "Notion-Version": "2022-06-28",
         }
-        url = f"https://api.notion.com/v1/databases/{self.database_id}/query" 
+        url = f"https://api.notion.com/v1/databases/{database_id}/query" 
         get_all = num_pages is None
         page_size = 100 if get_all else num_pages
 
@@ -44,15 +44,27 @@ class NotionRequest:
             return properties[0],properties[2]['url']
         elif properties[1] == 'rich_text' and properties[2]['rich_text'] :
             return properties[0],properties[2]['rich_text'][0]['plain_text']
-        elif properties[1] == 'rollup' and properties[2]['rollup']['array'] :
-            return properties[0],properties[2]['rollup']['array'][0]['unique_id']['number']
+        elif properties[1] == 'rollup':
+            if properties[2]['rollup']['type']== 'array' and properties[2]['rollup']['array']:
+                return properties[0],properties[2]['rollup']['array'][0]['unique_id']['number']
+            elif properties[2]['rollup']['type']=='number':
+                return properties[0],properties[2]['rollup']['number']
+            else:
+                return properties[0],None
+
         elif properties[1] == 'formula':
-            return properties[0],properties[2]['formula']['number']
+            return properties[0],properties[2]['formula']['number'] if properties[2]['formula']['type'] == 'number'else properties[2]['formula']['string']
         elif properties[1] == 'date':
             return properties[0],properties[2]['date']['start']
         else:
             return properties[0],None
         
+    def add_rows_table(self,interest_points):
+        properties = list()
+        for prop in interest_points:
+            properties.append(list((map(lambda x:self.get_value_propertie(x),prop))))
+        return properties
+
     def get_properties_table(self,propert):
         df_prop = pd.DataFrame(data =propert[1])
         df_prop_transpose = df_prop.transpose()
@@ -64,15 +76,25 @@ class NotionRequest:
             df_properties = df_properties_t.rename(columns=df_properties_t.iloc[0]).loc[1:]
             df_prop=pd.concat([df_prop,df_properties],ignore_index=True)
         return df_prop
+    def get_dataframe(self,request):
+        json_properties = self.get_interest_points_properties(request)
+        properties = self.add_rows_table(json_properties)
+        df_properties = self.get_properties_table(properties)
+        return df_properties
+
+
 def main():
-    notion = NotionRequest('API_KEI','TABLE_ID')
-    interest_points=notion.request()
-    interest_points_properties = notion.get_interest_points_properties(interest_points)
-    properties = list()
-    for prop in interest_points_properties:
-        properties.append(list((map(lambda x:notion.get_value_propertie(x),prop))))
-    df_properties = notion.get_properties_table(properties)
-    print(df_properties)
+    notion = NotionRequest('secret_HHOAubLbR6FCQ8Xixvf8E5AUZ9c4QaUelv1akHnhxWU')
+    interest_points=notion.request('4a69dd755af24bb6b1462cf2f2576fda')
+    visit_places = notion.request('dbde81e4eaca43258ff8cc4c0f4f99c5')
+    trips = notion.request('eb380f41bb5846e981654bba2ece3d46')
+    df_interest_points = notion.get_dataframe(interest_points)
+    df_visit_places = notion.get_dataframe(visit_places)
+    df_trips = notion.get_dataframe(trips)
+    google_sheets = GoogleSheets('OurTravelBook')
+    google_sheets.export_google_sheet(df_visit_places,0)
+    google_sheets.export_google_sheet(df_interest_points,1)
+    google_sheets.export_google_sheet(df_trips,2)
 
 if __name__ == '__main__':
     main()

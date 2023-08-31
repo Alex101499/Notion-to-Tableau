@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "golden-operator-313523",
+  "private_key_id": "5c874249f8e90a95e2cc600b358c07f61b99e3fe",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCG+0P2zVOYCYqE\njPHA8a3Z0TDmjPKJx7kekykJRhM4eE5URrF0oW7m6EsobJTgGSvZYkAC8GA+4hQd\nPtdoHhRFgxJiX/TTPgAUXzxLTft/Y3c/Lh+b3tTC0n1P3yp5EiNZvd3o7Wp045dx\nzGmN7Ivhv/m6Gk3UDKp1Rwj7En/Kn6zJ/I/XRFsRJCz1L6PSNQtERk+JIooMh3aD\nIqayg7avwGaSlRBcUH8iWARf92pl4Jgdwmm/jUtUKnlp8ZeTPjG2X/dJZgfpRIWB\nKHxURGmK4Akaqksyajl4tBJ/2KigCo9DZNIEVD88JROI5GAfOcyEOo4wgX0lYsbF\n8CUBvu0PAgMBAAECggEAJiUu1Tm8RGx51TChhzWlPDdmWtj9F5u2AGJ1B9ZiSySQ\nejeKIZwXY7DEwJVC0zu5zRJ7ZXk5sbuhFIy0QguyDdzXHq7gWKweSKOLPfq5NoxM\n4DFwJFPqC26BlEdMUO+jxtIlupQRcBv7KeEq+T0eYLsoXwPc965mo4LiElXtgDyL\neoiAklC+sL5zwvNRexPat3noVReVPMo+W34I9kJjovZy+KKFqm5i4XGr7ng5wFJ4\nYzprXR7FbGzS4A2ZlWDM59lpXir3NPOf80/iorUuIdNF0OoKkCXerGwBS/u0LvmZ\nztvuij7AMwBr7cKdcw4jL548Ltgvr/+kRgQmdwv+0QKBgQC9NZCdYf1FRfEQoRWG\nCEQX420UaTXb4ttMUpSwuaGFowg6mGUHwRmqOEsEoxsOqq5QxNBfgZ7r4E60C5f7\niRLzuxqRk3YthLan1BnYJzIRtNpoaLJw1yH4cQXd7zo25rXVALY86/tpIrK98z14\nKIlPOPmePSQw0xWtjq9okAcfPwKBgQC2oUGSnYK6rskVvlHwh0cIha8RaIkQUz53\nnP5jDjMvpE9Qp3lIK3jinV6faBlRysyI/qjQXdFdnk3UjCFtDqmvxfsa7D93NBoF\nTlj4/yYcjRh+VjPSgLUoP8USWPEZwUSgmXonrG//KaGRG9ck0J75E/i5a3FHNGC1\neiz4XLOOMQKBgFq0pSFt6ncdMpXgQ2s/5zT0iERys6k4Nh1+sV2PgEmKgNVmXXi8\nL8uUtRICB2SemnaKA8LlZwR5QgG6VR/29Kj3l6MWaF8l8lK+sa0YDT7DzrijCHhk\nChsKQ9/DYcsUCzOT5cmK77nVMo8xXtSNylW6YKBle0YUy52qe5jLAz8NAoGAHAf2\nM5W/ef3X2WGD3CI3UeSK8WYVG49bWCqdlQCZ9KcIkX2TDPO3MzkqS9dDg51X9XL4\n4Dp2JyNkGMqFWuLUQqllmEVInHg/wi67U0R+SgWSC9oZTCb7Jzlaey1xnB1g9jF4\nYVyDOCvgo5AdXoYy0FIza+pE0cQFT/V3r4sy+BECgYA8fZahLQlJZhvQm+X7HU/8\nOLAB2qU29/a/ITfVM9FYYhJJkqsXABH8NzBl8MOxja+6VCOUVzNDcnO9fCTwfnF9\n64+mIDbBBkby7rXf9tBPV8BjRy5CYDoyMgVunEd9Sd7pyA50T/8HqV03VqtKpo2B\nDsAAHqLL5+W7lM/KDHPocQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "notion-to-tableau@golden-operator-313523.iam.gserviceaccount.com",
+  "client_id": "110064291370610668874",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/notion-to-tableau%40golden-operator-313523.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
