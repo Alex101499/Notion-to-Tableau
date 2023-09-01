@@ -1,12 +1,14 @@
+import os
+from dotenv import load_dotenv, find_dotenv
 import pandas as pd
 import gspread
 from gspread_dataframe import set_with_dataframe
 from oauth2client.service_account import ServiceAccountCredentials
 
-
+load_dotenv(find_dotenv())
 class GoogleSheets():
     def __init__(self,workbook):
-        self.credentials = 'keys/golden-operator-313523-5c874249f8e9.json'
+        self.credentials = os.getenv('GOOGLE_SHEET_API')
         self.workbook = workbook
     def export_google_sheet(self,df,sheet_number):
         # Define the scope

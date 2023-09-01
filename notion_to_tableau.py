@@ -1,11 +1,17 @@
+import os
+from dotenv import load_dotenv, find_dotenv
+from dataclasses import dataclass
 import requests
 from pprint import pprint
 import pandas as pd
 from google_sheets_api import GoogleSheets
 
+
+load_dotenv(find_dotenv())
+
 class NotionRequest:
-    def __init__(self,token):
-        self.token = token
+    def __init__(self):
+        self.token =  os.getenv('NOTION_API')
     def request(self,database_id,num_pages=None):
         headers = {
         "Authorization": "Bearer " + self.token,
@@ -84,10 +90,13 @@ class NotionRequest:
 
 
 def main():
-    notion = NotionRequest('API_KEY')
-    interest_points=notion.request('TABLE_ID')
-    visit_places = notion.request('TABLE_ID')
-    trips = notion.request('TABLE_ID')
+    notion = NotionRequest()
+    interest_points_id = os.getenv('INTEREST_POINT_ID')
+    visit_places_id = os.getenv('VISIT_PLACES_ID')
+    trips_id = os.getenv('TRIPS_ID')
+    interest_points=notion.request(interest_points_id)
+    visit_places = notion.request(visit_places_id)
+    trips = notion.request(trips_id)
     df_interest_points = notion.get_dataframe(interest_points)
     df_visit_places = notion.get_dataframe(visit_places)
     df_trips = notion.get_dataframe(trips)
