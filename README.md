@@ -1,3 +1,5 @@
+# Notion to Google Sheets for Handling data to Tableau Viz
+
 🎉Welcome to the Notion Data Exporter project🎉 – a  Python script designed to empower you with the ability to seamlessly extract, transform, and load your Notion database content for insightful analysis and efficient data management. As a seasoned senior Python developer, I present to you a meticulously crafted tool that bridges the gap between Notion's wealth of information and your analytical ambitions.
 Features:
 
